@@ -39,8 +39,20 @@ class TestResponsiveImageTag < MiniTest::Unit::TestCase
         it "should have an alt attribute with a value of 'foo'" do
           @tag.must_match "alt=\"foo\""
         end
-      end   
+      end
+      
+      describe "with ENV['RAILS_ASSET_ID'] set" do
+        before do
+          ENV["RAILS_ASSET_ID"] = "images/"
+          view = ActionView::Base.new
+          @tag = view.responsive_image_tag("small.jpg", "big.jpg")
+        end
+        
+        it "should prepend the correct asset path onto full-src" do
+          @tag.must_match "full-src=\"images/big.jpg\""
+        end
+      end
+       
     end
-    
   end
 end
