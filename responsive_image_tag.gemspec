@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/rails/generators/responsive_image_tag/config/templates/responsive-image-tag.js",
     "lib/responsive_image_tag.rb",
+    "responsive_image_tag.gemspec",
     "test/helper.rb",
     "test/test_responsive_image_tag.rb"
   ]
