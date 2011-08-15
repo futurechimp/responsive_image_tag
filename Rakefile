@@ -17,10 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "responsive_image_tag"
   gem.homepage = "http://github.com/futurechimp/responsive_image_tag"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "dave@toaster"
-  gem.authors = ["futurechimp"]
+  gem.summary = %Q{DO NOT USE THIS YET! Helps you insert responsive images into your views}
+  gem.description = %Q{Allows you to specify two images in a responsive_image_tag, and includes a javascript generator which will rewrite the DOM, requesting the correct image based on the screen size of the current client device.}
+  gem.email = "dave.hrycyszyn@headlondon.com"
+  gem.authors = ["Dave Hrycyszyn"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
