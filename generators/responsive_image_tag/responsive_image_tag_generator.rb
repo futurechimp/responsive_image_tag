@@ -1,6 +1,6 @@
 class ResponsiveImageTagGenerator < Rails::Generator::Base
 
-  SOURCE = File.join("..", "..", "..", "lib", "rails", "generators", "responsive_image_tagBLAH", "javascript", "templates", "responsive-image-tag.js")
+  SOURCE = File.join("..", "..", "..", "lib", "rails", "generators", "responsive_image_tag", "javascript", "templates", "responsive-image-tag.js")
 
   def manifest
     record do |m|
