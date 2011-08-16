@@ -1,9 +1,18 @@
 module ResponsiveImageTag
   
+  # Emits the special (and somewhat ugly) markup for our responsive image
+  # tag.
+  #
+  # NB: the @image_path@ method is a private method of the Rails
+  # asset_tag_helper.
+  #
   def responsive_image_tag(small, big, options = {})
-    full_src = ENV["RAILS_ASSET_ID"] + big
-    options = options.merge!("full-src" => full_src)
-    image_tag(small, options)
+    options["full-src"] = image_path(big)
+    output = tag "span", {:class => "img-placeholder"}
+    output += tag "noscript", nil, true
+    output += image_tag(small, options)
+    output += tag "/noscript", nil, true
+    output
   end
   
 end

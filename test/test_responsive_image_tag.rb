@@ -28,7 +28,7 @@ class TestResponsiveImageTag < MiniTest::Unit::TestCase
       end
 
       it "should use big.jpg as the value for full-src" do
-        @tag.must_match "full-src=\"big.jpg\""
+        @tag.must_match "full-src=\"/images/big.jpg\""
       end
       
       describe "with an :alt option specified" do
@@ -49,7 +49,7 @@ class TestResponsiveImageTag < MiniTest::Unit::TestCase
         end
         
         it "should prepend the correct asset path onto full-src" do
-          @tag.must_match "full-src=\"images/big.jpg\""
+          @tag.must_match "full-src=\"/images/big.jpg"
         end
       end
        
