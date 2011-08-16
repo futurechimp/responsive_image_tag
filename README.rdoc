@@ -1,6 +1,38 @@
 = responsive_image_tag
 
-Description goes here.
+h1. Installation
+
+Put it in your Gemfile:
+
+ gem 'responsive_image_tag'
+
+Then install it:
+
+ bundle install
+ 
+There's a generator which copies a JavaScript file into place in @public/javascripts@.
+
+You can run it like this:
+
+ 
+h2. Rails 3
+
+ rails generate responsive_image_tag
+
+h2. Rails 2
+
+ script/generate responsive_image_tag
+
+
+h1. Usage
+
+You need to do two things. First, make sure that you include a reference to the JavaScript file in your layout:
+
+ <%= javascript_include_tag "responsive-image-tag" %>
+ 
+After that, you can use the new tag like so, in a view:
+
+ <%= responsive_image_tag("small.jpg", "big.jpg") %>
 
 == Contributing to responsive_image_tag
  
