@@ -7,9 +7,9 @@ module ResponsiveImageTag
   # asset_tag_helper.
   #
   def responsive_image_tag(small, big, options = {})
-    options["data-fullsrc"] = image_path(big)
     output = tag "span", {:class => "img-placeholder"}
-    output += tag "noscript", nil, true
+    output += tag "/span"
+    output += tag "noscript", {"data-fullsrc" => image_path(big), :class => "responsivize"}, true
     output += image_tag(small, options)
     output += tag "/noscript", nil, true
     output
