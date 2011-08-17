@@ -12,7 +12,7 @@ module ResponsiveImageTag
       def create_javascript_file
         template 'responsive-image-tag-jquery.js', 
           File.join(
-            'public', 'javascripts', 'responsive-image-tag-prototype.js')
+            'public', 'javascripts', 'responsive-image-tag-jquery.js')
       end
       
     end
