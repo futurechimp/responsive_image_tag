@@ -11,7 +11,7 @@ module ResponsiveImageTag
 
       def create_javascript_file
         template 'responsive-image-tag.js', 
-                  File.join('javascript', 'responsive-image-tag.js')
+                File.join('public', 'javascripts', 'responsive-image-tag.js')
       end
       
     end
