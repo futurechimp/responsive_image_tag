@@ -17,7 +17,7 @@ You can run it like this:
  
 === Rails 3
 
- rails generate responsive_image_tag
+ rails g responsive_image_tag:javascript
 
 === Rails 2
 
