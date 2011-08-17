@@ -46,6 +46,9 @@ After that, you can use the new tag like so, in a view:
 
 == Copyright
 
-Copyright (c) 2011 futurechimp. See LICENSE.txt for
-further details.
+Copyright (c) 2011 Headlondon, http://www.headlondon.com
+
+Authors: Dave Hrycyszyn, Mairead Buchan
+
+See LICENSE.txt for further details.
 
