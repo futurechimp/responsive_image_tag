@@ -2,7 +2,7 @@
 
 module ResponsiveImageTag
   module Generators
-    class JavascriptGenerator < Rails::Generators::Base
+    class JqueryJavascriptGenerator < Rails::Generators::Base
       desc 'Creates a javascript file which takes care of responsive images for you'
 
       def self.source_root
@@ -10,8 +10,9 @@ module ResponsiveImageTag
       end
 
       def create_javascript_file
-        template 'responsive-image-tag.js', 
-                File.join('public', 'javascripts', 'responsive-image-tag.js')
+        template 'responsive-image-tag-jquery.js', 
+          File.join(
+            'public', 'javascripts', 'responsive-image-tag-prototype.js')
       end
       
     end
