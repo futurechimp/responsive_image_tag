@@ -27,6 +27,7 @@ GEM
       git (>= 1.2.5)
       rake
     minitest (2.4.0)
+    nokogiri (1.5.0)
     rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -44,4 +45,5 @@ DEPENDENCIES
   bundler (~> 1.0.0)
   jeweler (~> 1.6.4)
   minitest
+  nokogiri
   rcov
