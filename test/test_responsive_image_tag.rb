@@ -85,12 +85,12 @@ class TestResponsiveImageTag < MiniTest::Unit::TestCase
         
         it "should put an :alt attribute on the <noscript> tag" do
           noscript = @doc.xpath("noscript").first
-          assert noscript.attributes["alt"]
+          assert noscript.attributes["data-alttext"]
         end
         
         it "should put a value of 'foo' into the :alt" do
           noscript = @doc.xpath("noscript").first
-          assert_equal "foo", noscript.attributes["alt"].value
+          assert_equal "foo", noscript.attributes["data-alttext"].value
         end        
         
       end

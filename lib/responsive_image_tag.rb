@@ -24,7 +24,7 @@ module ResponsiveImageTag
       :class => "responsivize"
     }
     unless options.nil? || options == {} || options[:alt].nil?
-      attrs.merge!(:alt => options[:alt])
+      attrs.merge!("data-alttext" => options[:alt])
     end
     attrs
   end
