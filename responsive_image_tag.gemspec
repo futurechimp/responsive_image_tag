@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{responsive_image_tag}
-  s.version = "0.1.3"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dave Hrycyszyn"]
@@ -24,10 +24,13 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "generators/responsive_image_tag/responsive_image_tag_generator.rb",
+    "generators/responsive_image_tag/jquery_responsive_image_tag_generator.rb",
+    "generators/responsive_image_tag/prototype_responsive_image_tag_generator.rb",
     "generators/responsive_image_tag/templates/README",
-    "lib/rails/generators/responsive_image_tag/javascript/javascript_generator.rb",
-    "lib/rails/generators/responsive_image_tag/javascript/templates/responsive-image-tag.js",
+    "lib/rails/generators/responsive_image_tag/javascript/jquery_javascript_generator.rb",
+    "lib/rails/generators/responsive_image_tag/javascript/prototype_javascript_generator.rb",
+    "lib/rails/generators/responsive_image_tag/javascript/templates/responsive-image-tag-jquery.js",
+    "lib/rails/generators/responsive_image_tag/javascript/templates/responsive-image-tag-prototype.js",
     "lib/responsive_image_tag.rb",
     "responsive_image_tag.gemspec",
     "test/helper.rb",
