@@ -2,7 +2,7 @@
 
 module ResponsiveImageTag
   module Generators
-    class PrototypeJavascriptGenerator < Rails::Generators::Base
+    class PrototypeGenerator < Rails::Generators::Base
       desc 'Creates a javascript file which takes care of responsive images for you'
 
       def self.source_root

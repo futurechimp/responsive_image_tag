@@ -2,7 +2,7 @@
 
 module ResponsiveImageTag
   module Generators
-    class JqueryJavascriptGenerator < Rails::Generators::Base
+    class JqueryGenerator < Rails::Generators::Base
       desc 'Creates a javascript file which takes care of responsive images for you'
 
       def self.source_root
