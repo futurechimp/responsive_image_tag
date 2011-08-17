@@ -9,13 +9,24 @@ module ResponsiveImageTag
   def responsive_image_tag(small, big, options = {})
     output = tag "span", {:class => "img-placeholder"}
     output += tag "/span", nil, true
-    output += tag "noscript", {
-      "data-fullsrc" => image_path(big),
-      "data-mobilesrc" => image_path(small),
-      :class => "responsivize"}, true
+    output += tag "noscript", noscript_attributes(small, big, options), true  
     output += image_tag(small, options)
     output += tag "/noscript", nil, true
     output
+  end
+  
+  private 
+  
+  def noscript_attributes(small, big, options)
+    attrs = {
+      "data-fullsrc" => image_path(big),
+      "data-mobilesrc" => image_path(small),
+      :class => "responsivize"
+    }
+    unless options.nil? || options == {} || options[:alt].nil?
+      attrs.merge!(:alt => options[:alt])
+    end
+    attrs
   end
   
 end
