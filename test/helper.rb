@@ -19,6 +19,7 @@ require 'responsive_image_tag'
 
 require 'active_support'
 require 'action_view'
+require 'nokogiri'
 
 class MiniTest::Unit::TestCase
 end
