@@ -10,7 +10,7 @@ module ResponsiveImageTag
     output = tag "span", {:class => "img-placeholder"}
     output += tag "/span", nil, true
     output += tag "noscript", noscript_attributes(small, big, options), true  
-    output += image_tag(small, options)
+    output += image_tag(big, options)
     output += tag "/noscript", nil, true
     output
   end
