@@ -2,10 +2,7 @@
 
 == Creating responsive images
 
-The @responsive_image_tag@ helper selects an image depending on the width of 
-the current device. The @screen.width@ is detected by javascript and then an 
-image element is inserted in the page with a dynamically created @src@ 
-attribute.
+responsive_image_tag is a Rails helper which selects an image depending on the width of the current device. The <pre>screen.width</pre> is detected by javascript and then an image element is inserted in the page with a dynamically created <pre>src</pre> attribute.
 
 It works with Rails 2 and Rails 3, and there are javascript adapters for both Jquery and Prototype.  Pick your poison. 
 
@@ -18,33 +15,17 @@ Here's the HTML which the helper inserts into the page:
  	<img src="big.jpg">
  </noscript>
 
-The responsive images have to appear for non-javascript users as well as 
-those with javascript turned on. 
- 
-To achieve this the helper places the default image inside a <noscript>
-tag which is then deleted by the javascript library. The image attributes 
-such as full size, mobile size and alt text are also stored as HTML5 data 
-attributes on the <noscript> tag so they are available in the DOM for the 
-javascript to access. 
+The responsive images have to appear for non-javascript users as well as those with javascript turned on.
 
-The library relies on a trick which has all the elegance of a greasy 
-late-night kebab: child elements of the <noscript> tag are not added to the 
-DOM, so deleting the <noscript> prevents an HTTP request being made to the 
-server. This way only the image being requested by the dynamically inserted image tag is making a request.
+To achieve this the helper places the default image inside a <noscript> tag which is then deleted by the javascript library. The image attributes such as full size, mobile size and alt text are also stored as HTML5 data attributes on the <noscript> tag so they are available in the DOM for the javascript to access.
 
-To insert the dynamically created image element into the page you need a
-parent element in the DOM to append to. The rails helper also creates a 
-<span> tag with a class of "img-placeholder" to house the new image. 
+The library relies on a trick which has all the elegance of a greasy late-night kebab: child elements of the <noscript> tag are not added to the DOM, so deleting the <noscript> prevents an HTTP request being made to the server. This way only the image being requested by the dynamically inserted image tag is making a request.
 
-When the DOM is ready the javascript object responsiveImageTag detects 
-all <noscript> elements on the page with a class of "responsivize".
+To insert the dynamically created image element into the page you need a parent element in the DOM to append to. The rails helper also creates a <span> tag with a class of "img-placeholder" to house the new image.
 
-It retrieves the HTML5 data attributes (@data-mobilesrc@, @data-fullsrc@, and
-@data-alttext@) and then creates an image tag with the correct source  
-depending on the available screen width of the users device. Any device 
-smaller than 768px is considered to be a mobile device. The library 
-inserts the new element into the page and the <noscript> tags are then hidden 
-from view.
+When the DOM is ready the javascript object responsiveImageTag detects all <noscript> elements on the page with a class of "responsivize".
+
+It retrieves the HTML5 data attributes (@data-mobilesrc@, @data-fullsrc@, and @data-alttext@) and then creates an image tag with the correct source depending on the available screen width of the users device. Any device smaller than 768px is considered to be a mobile device. The library inserts the new element into the page and the <noscript> tags are then hidden from view.
 
 == Installation
 
