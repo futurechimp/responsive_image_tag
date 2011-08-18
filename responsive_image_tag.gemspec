@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{responsive_image_tag}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dave Hrycyszyn"]
-  s.date = %q{2011-08-17}
+  s.date = %q{2011-08-18}
   s.description = %q{Allows you to specify two images in a responsive_image_tag, and includes a javascript generator which will rewrite the DOM, requesting the correct image based on the screen size of the current client device.}
   s.email = %q{dave.hrycyszyn@headlondon.com}
   s.extra_rdoc_files = [
