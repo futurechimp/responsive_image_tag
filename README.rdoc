@@ -25,7 +25,7 @@ To insert the dynamically created image element into the page you need a parent 
 
 When the DOM is ready the javascript object responsiveImageTag detects all <noscript> elements on the page with a class of "responsivize".
 
-It retrieves the HTML5 data attributes (@data-mobilesrc@, @data-fullsrc@, and @data-alttext@) and then creates an image tag with the correct source depending on the available screen width of the users device. Any device smaller than 768px is considered to be a mobile device. The library inserts the new element into the page and the <noscript> tags are then hidden from view.
+It retrieves the HTML5 data attributes (<tt>data-mobilesrc</tt>, <tt>data-fullsrc</tt>, and <tt>data-alttext</tt>) and then creates an image tag with the correct source depending on the available screen width of the users device. Any device smaller than 768px is considered to be a mobile device. The library inserts the new element into the page and the <noscript> tags are then hidden from view.
 
 == Installation
 
@@ -37,7 +37,7 @@ Then install it:
 
  bundle install
  
-There's a generator which copies a JavaScript file into place in @public/javascripts@.
+There's a generator which copies a JavaScript file into place in <tt>public/javascripts</tt>.
 
 You can run it like this:
 
@@ -48,7 +48,7 @@ You can run it like this:
 
 or 
 
-rails g responsive_image_tag:prototype
+ rails g responsive_image_tag:prototype
 
 === Rails 2
 
