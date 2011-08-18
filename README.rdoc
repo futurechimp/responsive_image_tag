@@ -2,7 +2,7 @@
 
 == Creating responsive images
 
-responsive_image_tag is a Rails helper which selects an image depending on the width of the current device. The <pre>screen.width</pre> is detected by javascript and then an image element is inserted in the page with a dynamically created <pre>src</pre> attribute.
+responsive_image_tag is a Rails helper which selects an image depending on the width of the current device. The <tt>screen.width</tt> is detected by javascript and then an image element is inserted in the page with a dynamically created <tt>src</tt> attribute.
 
 It works with Rails 2 and Rails 3, and there are javascript adapters for both Jquery and Prototype.  Pick your poison. 
 
