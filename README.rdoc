@@ -2,6 +2,12 @@
 
 == Creating responsive images
 
+It's quite common today for web sites to be viewed on a wide range of devices, from powerful desktop workstations with huge screen resolutions and plenty of bandwidth, to tiny resource-constrained mobile devices. Serving images to this wide range of clients becomes an issue: if you make your images too large, you'll severely degrade performance on mobile phones, but if you make your images too large, they'll look terrible to desktop users.
+
+Wouldn't it be nice if you could serve small images to mobile clients, and large images to desktop clients?  The HTML spec doesn't really allow for device-specific asset serving, but it can be done with a little dash of cleverness. The technique used here allows you to serve device-specific images, and not make two server requests (saving bandwidth and server load).
+
+We've packaged it up as a rubygem. 
+
 responsive_image_tag is a Rails helper which selects an image depending on the width of the current device. The <tt>screen.width</tt> is detected by javascript and then an image element is inserted in the page with a dynamically created <tt>src</tt> attribute.
 
 It works with Rails 2 and Rails 3, and there are javascript adapters for both jQuery and Prototype.  Pick your poison. 
