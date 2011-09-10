@@ -6,6 +6,13 @@ responsive_image_tag is a Rails helper which selects an image depending on the w
 
 It works with Rails 2 and Rails 3, and there are javascript adapters for both jQuery and Prototype.  Pick your poison. 
 
+== Motivation and approach
+
+You can find out what problems we're trying to solve with this code by reading
+the blog post about it here[http://headlondon.com/our-thoughts/technology/posts/creating-responsive-images-using-the-noscript-tag].
+
+Although this is packaged as a ruby gem, the approach is generally valid across platforms, and as a bonus, it is accessible - screenreaders and web crawlers will see the content of the <noscript> tag, and parse the content quite happily.
+
 == HTML structure
 
 Here's the HTML which the helper inserts into the page:
