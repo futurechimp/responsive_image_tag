@@ -2,7 +2,7 @@
 
 == Creating responsive images
 
-It's quite common today for web sites to be viewed on a wide range of devices, from powerful desktop workstations with huge screen resolutions and plenty of bandwidth, to tiny resource-constrained mobile devices. Serving images to this wide range of clients becomes an issue: if you make your images too large, you'll severely degrade performance on mobile phones, but if you make your images too large, they'll look terrible to desktop users.
+It's quite common today for web sites to be viewed on a wide range of devices, from powerful desktop workstations with huge screen resolutions and plenty of bandwidth, to tiny resource-constrained mobile devices. Serving images to this wide range of clients becomes an issue: if you make your images large, you'll severely degrade performance on mobile phones, but if you make your images small, they'll look terrible to desktop users.
 
 Wouldn't it be nice if you could serve small images to mobile clients, and large images to desktop clients?  The HTML spec doesn't really allow for device-specific asset serving, but it can be done with a little dash of cleverness. The technique used here allows you to serve device-specific images, and not make two server requests (saving bandwidth and server load).
 
