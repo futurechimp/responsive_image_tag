@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{responsive_image_tag}
-  s.version = "0.2.5"
+  s.name = "responsive_image_tag"
+  s.version = "0.2.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dave Hrycyszyn"]
-  s.date = %q{2011-08-18}
-  s.description = %q{Allows you to specify two images in a responsive_image_tag, and includes a javascript generator which will rewrite the DOM, requesting the correct image based on the screen size of the current client device.}
-  s.email = %q{dave.hrycyszyn@headlondon.com}
+  s.date = "2012-10-02"
+  s.description = "Allows you to specify two images in a responsive_image_tag, and includes a javascript generator which will rewrite the DOM, requesting the correct image based on the screen size of the current client device."
+  s.email = "dave.hrycyszyn@headlondon.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "generators/responsive_image_tag/prototype_responsive_image_tag_generator.rb",
     "generators/responsive_image_tag/templates/README",
     "lib/generators/responsive_image_tag/jquery_generator.rb",
+    "lib/generators/responsive_image_tag/padrino_rit.rb",
     "lib/generators/responsive_image_tag/prototype_generator.rb",
     "lib/generators/responsive_image_tag/templates/responsive-image-tag-jquery.js",
     "lib/generators/responsive_image_tag/templates/responsive-image-tag-prototype.js",
@@ -36,11 +37,11 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_responsive_image_tag.rb"
   ]
-  s.homepage = %q{http://github.com/futurechimp/responsive_image_tag}
+  s.homepage = "http://github.com/futurechimp/responsive_image_tag"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.4.2}
-  s.summary = %q{DO NOT USE THIS YET! Helps you insert responsive images into your views}
+  s.rubygems_version = "1.8.17"
+  s.summary = "DO NOT USE THIS YET! Helps you insert responsive images into your views"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
