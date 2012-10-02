@@ -1,5 +1,14 @@
+begin
+  require 'padrino-gen'
+  # debugger
+  Padrino::Generators.load_paths << Dir[File.dirname(__FILE__) + '/generators/responsive_image_tag/padrino_rit.rb']
+rescue LoadError
+  # Fail silently
+  puts "Error"
+end
+
 module ResponsiveImageTag
-  
+
   # Emits the special (and somewhat ugly) markup for our responsive image
   # tag.
   #
@@ -9,26 +18,27 @@ module ResponsiveImageTag
   def responsive_image_tag(small, big, options = {})
     output = tag "span", {:class => "img-placeholder"}
     output += tag "/span", nil, true
-    output += tag "noscript", noscript_attributes(small, big, options), true  
+    output += tag "noscript", noscript_attributes(small, big, options), true
     output += image_tag(big, options)
     output += tag "/noscript", nil, true
     output
   end
-  
-  private 
-  
+
+  private
+
   def noscript_attributes(small, big, options)
     attrs = {
       "data-fullsrc" => image_path(big),
       "data-mobilesrc" => image_path(small),
       :class => "responsivize"
     }
-    unless options.nil? || options == {} || options[:alt].nil?
-      attrs.merge!("data-alttext" => options[:alt])
+    unless options.nil? || options == {}
+      attrs.merge!("data-alttext" => options[:alt]) unless options[:alt].nil?
+      attrs.merge!("data-cssclass" => options[:class]) unless options[:class].nil?
     end
     attrs
   end
-  
+
 end
 
 ActionView::Base.send(:include, ResponsiveImageTag) if defined?(ActionView::Base)
