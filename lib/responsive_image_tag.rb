@@ -1,3 +1,12 @@
+begin
+  require 'padrino-gen'
+  # debugger
+  Padrino::Generators.load_paths << Dir[File.dirname(__FILE__) + '/generators/responsive_image_tag/padrino_rit.rb']
+rescue LoadError
+  # Fail silently
+  puts "Error"
+end
+
 module ResponsiveImageTag
 
   # Emits the special (and somewhat ugly) markup for our responsive image
