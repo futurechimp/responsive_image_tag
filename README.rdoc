@@ -96,6 +96,18 @@ You can add an optional CSS class on the responsivized images. If you don't spec
 
   $(".responsivize").responsiveImageTag({cssClass: "scale-with-grid"});
 
+
+==
+
+CHANGELOG
+
+0.3.x
+
+* Removed prototype support
+* Added support for specifying css classes on responsivized images
+* Converted jQuery file into a jQuery plugin
+* Code users must now supply their own document.ready mechanism (either require.js or a document.ready())
+
 == Contributing to responsive_image_tag
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
