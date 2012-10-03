@@ -10,7 +10,7 @@ We've packaged it up as a rubygem.
 
 responsive_image_tag is a Rails helper which selects an image depending on the width of the current device. The <tt>screen.width</tt> is detected by javascript and then an image element is inserted in the page with a dynamically created <tt>src</tt> attribute.
 
-It works with Rails 2 and Rails 3, and there are javascript adapters for both jQuery and Prototype.  Pick your poison.
+It works with Rails 2, Rails 3, and Padrino. There is a jQuery plugin which handles the image replace functionality.
 
 == Motivation and approach
 
@@ -23,10 +23,10 @@ Although this is packaged as a ruby gem, the approach is generally valid across 
 
 Here's the HTML which the helper inserts into the page:
 
- <span class="img-placeholder"></span>
- <noscript data-mobilesrc="small.jpg" data-fullsrc="big.jpg" data-alttext="your alt text" class="responsivize">
- 	<img src="big.jpg">
- </noscript>
+  <span class="img-placeholder"></span>
+  <noscript data-fullsrc="big.jpg" data-mobilesrc="small.jpg" class="responsivize" data-alttext="Alt text" data-cssclass="css-class">
+    <img alt="Image reads deliver for today, inspire for tomorrow" class="scale-with-grid" src="big.jpg" />
+  </noscript>
 
 The responsive images have to appear for non-javascript users as well as those with javascript turned on.
 
@@ -81,18 +81,20 @@ After that, you can use the new tag like so, in a view:
 
  <%= responsive_image_tag("small.jpg", "big.jpg", :alt => "Alt text", :class => "css-class") %>
 
-This will output HTML like so:
+This will generate HTML like so:
 
   <span class="img-placeholder"></span>
   <noscript data-fullsrc="big.jpg" data-mobilesrc="small.jpg" class="responsivize" data-alttext="Alt text" data-cssclass="css-class">
     <img alt="Image reads deliver for today, inspire for tomorrow" class="scale-with-grid" src="big.jpg" />
   </noscript>
 
-$(".responsivize").responsiveImageTag();
+In order for the JavaScript image replacement to happen, you need to put this in a `document.ready()` (or use something like require.js to accomplish the same thing).
 
-Optional CSS class for the images, otherwise it will add 'responsive'.
+  $(".responsivize").responsiveImageTag();
 
-$(".responsivize").responsiveImageTag({cssClass: "scale-with-grid"});
+You can add an optional CSS class on the responsivized images. If you don't specify one, it will default to 'responsive'.
+
+  $(".responsivize").responsiveImageTag({cssClass: "scale-with-grid"});
 
 == Contributing to responsive_image_tag
 
