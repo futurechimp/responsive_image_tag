@@ -1,14 +1,12 @@
 begin
   require 'padrino-gen'
-  # debugger
-  Padrino::Generators.load_paths << Dir[File.dirname(__FILE__) + '/generators/responsive_image_tag/padrino_rit.rb']
+  Padrino::Generators.load_paths << Dir[File.dirname(__FILE__) + '/generators/responsive_image_tag/padrino_copy_rit_js.rb']
 rescue LoadError
   # Fail silently
   puts "Error"
 end
 
 module ResponsiveImageTag
-
   # Emits the special (and somewhat ugly) markup for our responsive image
   # tag.
   #
@@ -38,7 +36,6 @@ module ResponsiveImageTag
     end
     attrs
   end
-
 end
 
 ActionView::Base.send(:include, ResponsiveImageTag) if defined?(ActionView::Base)

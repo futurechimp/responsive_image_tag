@@ -6,11 +6,11 @@ It's quite common today for web sites to be viewed on a wide range of devices, f
 
 Wouldn't it be nice if you could serve small images to mobile clients, and large images to desktop clients?  The HTML spec doesn't really allow for device-specific asset serving, but it can be done with a little dash of cleverness. The technique used here allows you to serve device-specific images, and not make two server requests (saving bandwidth and server load).
 
-We've packaged it up as a rubygem. 
+We've packaged it up as a rubygem.
 
 responsive_image_tag is a Rails helper which selects an image depending on the width of the current device. The <tt>screen.width</tt> is detected by javascript and then an image element is inserted in the page with a dynamically created <tt>src</tt> attribute.
 
-It works with Rails 2 and Rails 3, and there are javascript adapters for both jQuery and Prototype.  Pick your poison. 
+It works with Rails 2 and Rails 3, and there are javascript adapters for both jQuery and Prototype.  Pick your poison.
 
 == Motivation and approach
 
@@ -49,45 +49,53 @@ Put it in your Gemfile:
 Then install it:
 
  bundle install
- 
+
 There's a generator which copies a JavaScript file into place in <tt>public/javascripts</tt>.
 
 You can run it like this:
 
- 
+
 === Rails 3
 
- rails g responsive_image_tag:jquery
-
-or 
-
- rails g responsive_image_tag:prototype
+ rails g responsive_image_tag:copy_js
 
 === Rails 2
 
- script/generate jquery_responsive_image_tag
+ script/generate responsive_image_tag *Currently untested
 
-or
+=== Padrino
 
- script/generate prototype_responsive_image_tag
+ padrino g copy_rit_js
 
+ Options:
+
+ -d, [--js_destination] The destination path to copy the Javascript file too. Default: 'public/javascripts'
 
 == Usage
 
 You need to do two things. First, make sure that you include a reference to the JavaScript file in your layout:
 
- <%= javascript_include_tag "responsive-image-tag-jquery" %>
-
-or 
-
- <%= javascript_include_tag "responsive-image-tag-prototype" %>
+ <%= javascript_include_tag "responsive-image-tag" %>
 
 After that, you can use the new tag like so, in a view:
 
- <%= responsive_image_tag("small.jpg", "big.jpg") %>
+ <%= responsive_image_tag("small.jpg", "big.jpg", :alt => "Alt text", :class => "css-class") %>
+
+This will output HTML like so:
+
+  <span class="img-placeholder"></span>
+  <noscript data-fullsrc="big.jpg" data-mobilesrc="small.jpg" class="responsivize" data-alttext="Alt text" data-cssclass="css-class">
+    <img alt="Image reads deliver for today, inspire for tomorrow" class="scale-with-grid" src="big.jpg" />
+  </noscript>
+
+$(".responsivize").responsiveImageTag();
+
+Optional CSS class for the images, otherwise it will add 'responsive'.
+
+$(".responsivize").responsiveImageTag({cssClass: "scale-with-grid"});
 
 == Contributing to responsive_image_tag
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
