@@ -72,7 +72,6 @@ class TestResponsiveImageTag < MiniTest::Unit::TestCase
           assert @noscript.attributes["class"]
           assert @noscript.attributes["class"].value = "responsivize"
         end
-
       end
 
       describe "with an :alt option specified" do
