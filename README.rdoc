@@ -46,6 +46,8 @@ Put it in your Gemfile:
 
  gem 'responsive_image_tag'
 
+If you're using Padrino, make sure you put this *underneath* the `gem 'padrino'`.
+
 Then install it:
 
  bundle install
