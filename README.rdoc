@@ -50,13 +50,13 @@ Put it in your Gemfile:
 
  gem 'responsive_image_tag'
 
-If you're using Padrino, make sure you put this *underneath* the `gem 'padrino'`.
+If you're using Padrino, you'll need to put the `gem 'responsive_image_tag'` requirement in your Gemfile *after* `gem 'padrino'` as it depends on Padrino being loaded so it can attach itself to the Padrino generators.
 
 Then install it:
 
  bundle install
 
-There's a generator which copies a JavaScript file into place in <tt>public/javascripts</tt>.
+There's a generator which copies a JavaScript file into place. For Rails this will be <tt>public/javascripts</tt> but in Padrino you can specify an alternative location.
 
 You can run it like this:
 
@@ -66,7 +66,7 @@ You can run it like this:
 
 === Rails 2
 
- script/generate responsive_image_tag *Currently untested
+ script/generate responsive_image_tag *Currently untested in 0.3.X
 
 === Padrino
 
