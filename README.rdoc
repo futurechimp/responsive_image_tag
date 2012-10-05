@@ -56,9 +56,7 @@ Then install it:
 
  bundle install
 
-There's a generator which copies a JavaScript file into place. For Rails this will be <tt>public/javascripts</tt> but in Padrino you can specify an alternative location.
-
-You can run it like this:
+There's a generator which copies the JavaScript file into place. For Rails this will be <tt>public/javascripts</tt> but in Padrino you can specify an alternative location.
 
 === Rails 3
 
