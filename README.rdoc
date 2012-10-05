@@ -98,7 +98,7 @@ This will generate HTML like so:
     <img alt="Alt text" class="css-class" src="big.jpg" />
   </noscript>
 
-In order for the JavaScript image replacement to happen, you need to put the following mehtod call in a <tt>$(document).ready()</tt> block or where ever you are.
+In order for the JavaScript image replacement to happen, you need to put the following mehtod call in a <tt>$(document).ready()</tt> block or where ever you are initalising your JavaScript code.
 
   $(".responsivize").responsiveImageTag();
 
