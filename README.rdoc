@@ -135,6 +135,6 @@ You can add an optional CSS class on the responsivized images. If you don't spec
 
 == Copyright
 
-Copyright (c) 2011 "Dave Hrycyszyn"[http://www.headlondon.com/who-we-are#david-hrycyszyn], "Mairead Buchan"[http://www.headlondon.com/who-we-are#mairead-buchan] and "Stuart Chinery"[http://www.headlondon.com/who-we-are#stuart-chinery] - headlondon.com[http://www.headlondon.com]
+Copyright (c) 2011 {Dave Hrycyszyn}[http://www.headlondon.com/who-we-are#david-hrycyszyn], {Mairead Buchan}[http://www.headlondon.com/who-we-are#mairead-buchan] and {Stuart Chinery}[http://www.headlondon.com/who-we-are#stuart-chinery] - headlondon.com[http://www.headlondon.com]
 
 See LICENSE.txt for further details.
