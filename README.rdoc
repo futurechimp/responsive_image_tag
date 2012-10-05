@@ -1,5 +1,6 @@
 = responsive_image_tag
 
+
 == Creating responsive images
 
 It's quite common today for web sites to be viewed on a wide range of devices, from powerful desktop workstations with huge screen resolutions and plenty of bandwidth, to tiny resource-constrained mobile devices. Serving images to this wide range of clients becomes an issue: if you make your images large, you'll severely degrade performance on mobile phones, but if you make your images small, they'll look terrible to desktop users.
@@ -12,12 +13,14 @@ responsive_image_tag is a Rails helper which selects an image depending on the w
 
 It works with Rails 2, Rails 3, and Padrino. There is a jQuery plugin which handles the image replace functionality.
 
+
 == Motivation and approach
 
 You can find out what problems we're trying to solve with this code by reading
 the blog post about it here[http://headlondon.com/our-thoughts/technology/posts/creating-responsive-images-using-the-noscript-tag].
 
-Although this is packaged as a ruby gem, the approach is generally valid across platforms, and as a bonus, it is accessible - screenreaders and web crawlers will see the content of the <noscript> tag, and parse the content quite happily.
+Although this is packaged as a ruby gem, the approach is generally valid across platforms, and as a bonus, it is accessible - screenreaders and web crawlers will see the content of the <tt><noscript></tt> tag, and parse the content quite happily.
+
 
 == HTML structure
 
@@ -30,15 +33,16 @@ Here's the HTML which the helper inserts into the page:
 
 The responsive images have to appear for non-javascript users as well as those with javascript turned on.
 
-To achieve this the helper places the default image inside a <noscript> tag which is then deleted by the javascript library. The image attributes such as full size, mobile size and alt text are also stored as HTML5 data attributes on the <noscript> tag so they are available in the DOM for the javascript to access.
+To achieve this the helper places the default image inside a <tt><noscript></tt> tag which is then deleted by the javascript library. The image attributes such as full size, mobile size and alt text are also stored as HTML5 data attributes on the <tt><noscript></tt> tag so they are available in the DOM for the javascript to access.
 
-The library relies on a trick which has all the elegance of a greasy late-night kebab: child elements of the <noscript> tag are not added to the DOM, so deleting the <noscript> prevents an HTTP request being made to the server. This way only the image being requested by the dynamically inserted image tag is making a request.
+The library relies on a trick which has all the elegance of a greasy late-night kebab: child elements of the <tt><noscript></tt> tag are not added to the DOM, so deleting the <tt><noscript></tt> prevents an HTTP request being made to the server. This way only the image being requested by the dynamically inserted image tag is making a request.
 
-To insert the dynamically created image element into the page you need a parent element in the DOM to append to. The rails helper also creates a <span> tag with a class of "img-placeholder" to house the new image.
+To insert the dynamically created image element into the page you need a parent element in the DOM to append to. The rails helper also creates a <tt><span></tt> tag with a class of "img-placeholder" to house the new image.
 
-When the DOM is ready the javascript object responsiveImageTag detects all <noscript> elements on the page with a class of "responsivize".
+When the DOM is ready the javascript object responsiveImageTag detects all <tt><noscript></tt> elements on the page with a class of "responsivize".
 
-It retrieves the HTML5 data attributes (<tt>data-mobilesrc</tt>, <tt>data-fullsrc</tt>, and <tt>data-alttext</tt>) and then creates an image tag with the correct source depending on the available screen width of the users device. Any device smaller than 768px is considered to be a mobile device. The library inserts the new element into the page and the <noscript> tags are then hidden from view.
+It retrieves the HTML5 data attributes (<tt>data-mobilesrc</tt>, <tt>data-fullsrc</tt>, <tt>data-alttext</tt> and <tt>data-cssclass</tt>) and then creates an image tag with the correct source depending on the available screen width of the users device. Any device smaller than 768px is considered to be a mobile device. The library inserts the new element into the page and the <noscript> tags are then hidden from view.
+
 
 == Installation
 
@@ -46,16 +50,13 @@ Put it in your Gemfile:
 
  gem 'responsive_image_tag'
 
-If you're using Padrino, make sure you put this *underneath* the `gem 'padrino'`.
+If you're using Padrino, you'll need to put the <tt>gem 'responsive_image_tag'</tt> requirement in your Gemfile *after* <tt>gem 'padrino'</tt> as it depends on Padrino being loaded so it can attach itself to the Padrino generators.
 
 Then install it:
 
  bundle install
 
-There's a generator which copies a JavaScript file into place in <tt>public/javascripts</tt>.
-
-You can run it like this:
-
+There's a generator which copies the JavaScript file into place. For Rails this will be <tt>public/javascripts</tt> but in Padrino you can specify an alternative location.
 
 === Rails 3
 
@@ -63,15 +64,22 @@ You can run it like this:
 
 === Rails 2
 
- script/generate responsive_image_tag *Currently untested
+ script/generate responsive_image_tag *Currently untested in 0.3.X
 
 === Padrino
 
  padrino g copy_rit_js
 
- Options:
+Options:
 
- -d, [--js_destination] The destination path to copy the Javascript file too. Default: 'public/javascripts'
+-d, [--js_destination] The destination path to copy the Javascript file too. Default: 'public/javascripts'
+
+=== jQuery plugin
+
+You could use the JavaScript as a straight up jQuery plugin without using the HTML output helper.
+
+Copy the JavaScript file (lib/generators/responsive_image_tag/templates/responsive-image-tag.js) to your JavaScript folder and make sure your HTML structure matches that documented.
+
 
 == Usage
 
@@ -87,10 +95,10 @@ This will generate HTML like so:
 
   <span class="img-placeholder"></span>
   <noscript data-fullsrc="big.jpg" data-mobilesrc="small.jpg" class="responsivize" data-alttext="Alt text" data-cssclass="css-class">
-    <img alt="Image reads deliver for today, inspire for tomorrow" class="scale-with-grid" src="big.jpg" />
+    <img alt="Alt text" class="css-class" src="big.jpg" />
   </noscript>
 
-In order for the JavaScript image replacement to happen, you need to put this in a `document.ready()` (or use something like require.js to accomplish the same thing).
+In order for the JavaScript image replacement to happen, you need to put the following mehtod call in a <tt>$(document).ready()</tt> block or where ever you are initialising your JavaScript code.
 
   $(".responsivize").responsiveImageTag();
 
@@ -99,16 +107,20 @@ You can add an optional CSS class on the responsivized images. If you don't spec
   $(".responsivize").responsiveImageTag({cssClass: "scale-with-grid"});
 
 
-==
-
-CHANGELOG
+== CHANGELOG
 
 0.3.x
 
-* Removed prototype support
+* Removed prototype support. If you use Prototype then install the last 0.2.6 version.
 * Added support for specifying css classes on responsivized images
 * Converted jQuery file into a jQuery plugin
 * Code users must now supply their own document.ready mechanism (either require.js or a document.ready())
+
+
+== To Do List
+
+* Make JavaScript framework independant (or in other words as straight up JavaScript!)
+
 
 == Contributing to responsive_image_tag
 
@@ -120,11 +132,12 @@ CHANGELOG
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
+
 == Copyright
 
 Copyright (c) 2011 Headlondon, http://www.headlondon.com
 
-Authors: Dave Hrycyszyn, Mairead Buchan
+Authors: Dave Hrycyszyn, Mairead Buchan and Stuart Chinery
 
 See LICENSE.txt for further details.
 
